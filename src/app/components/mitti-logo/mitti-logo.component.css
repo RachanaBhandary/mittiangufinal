@@ -1,0 +1,19 @@
+.MittiLogoDesign{
+   
+    margin-top: 35%;
+    margin-left: 95%;
+    position: relative;
+height: 70px;
+width: 70px;
+}
+#suggestion{
+position: fixed
+}
+
+.user_img{
+    height: 70px;
+    width: 70px;
+    border:1.5px solid #f5f6fa;
+
+}
+

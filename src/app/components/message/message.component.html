@@ -1,0 +1,85 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
+<div [ngClass]="{'me' : message.sentBy === 'user'}" class="message-bubble ">
+
+
+   
+
+      
+          <div class="image">
+            <img [src]="message.sentBy === 'user' ? message.userImg : message.botImg" class="rounded-circle user_img" >
+        </div>  
+            <div class="message-text">
+                <div *ngIf="message.text=='bye'">{{work()}}</div>
+                
+               
+                {{message.text}}
+            </div>
+
+  
+
+
+
+<div *ngIf="message.chips && message.chips.length">
+
+    
+<span (click)="chipOperation(c)" *ngFor="let c of message.chips" class="chip">{{c.text}}</span>
+
+</div>
+<div *ngIf="message.data">
+    <div *ngVar="test as variable" [(ngModel)]="test">
+        <span>{{message.data}}</span>
+  </div>
+  {{message.data}}
+   
+    <div class="chart-wrapper">
+        <canvas baseChart 
+            [datasets]="lineChartData" 
+            
+            [labels]="lineChartLabels" 
+            [options]="lineChartOptions"
+            [colors]="lineChartColors" 
+            [legend]="lineChartLegend" 
+            [chartType]="lineChartType" 
+            [plugins]="lineChartPlugins">
+        </canvas>
+    </div>
+</div>
+
+
+
+
+<div *ngIf="message.suggestedActions && message.suggestedActions.length" id=suggestion>
+    
+
+    <span (click)="ReplayOperation(c1)" *ngFor="let c1 of message.suggestedActions" class="replay">{{c1.text}}</span>
+    
+    </div>
+    <div *ngIf="message.LinkAction && message.LinkAction.length">
+  
+        <span  *ngFor="let links of message.LinkAction" class="Links">{{links.text}}
+        
+        
+            <small><a target="_blank" [href]="links.webUrl">{{links.webUrl}}</a></small>
+        </span>
+        </div>
+
+
+
+
+
+
+
+<p *ngIf="message.webUrl" ><small><a target="_blank" [href]="message.webUrl">{{message.webUrl}}
+    </a></small></p>
+   
+
+
+
+</div>
+
+
+
+        
+    
+    <div class="clearfix">
+</div>

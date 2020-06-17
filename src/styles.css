@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+
+  html, body {margin: 0; height: 100%; overflow: hidden}
+
+  body,html{
+    height: 100%;
+    margin: 0;
+    background: rgba(255,255,255,0);;
+      
+      
+  }
+
+ #close{
+  float: right;
+    /* margin-bottom: 679px; */
+    margin-left: 368px;
+    cursor: pointer;
+    position: absolute;
+    padding: 2px 5px;
+    top: 0%;
+}
+
