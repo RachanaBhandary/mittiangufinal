@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MittiChatbot"
+    }
+  },
+  "defaultProject": "MittiChatbot",
+  "cli": {
+    "analytics": false
+  }
 }

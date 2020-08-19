@@ -72,7 +72,7 @@ reader.readAsDataURL(this.fileToUpload);
 
   }
 sendMessage(){
-  
+  console.log(this.textMessage)
 this.dfs.sendToBot({
   text:this.textMessage,
   
@@ -156,9 +156,11 @@ sendMessage1(){
     debugger;
         $(".msg_card_body").stop().animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
       
-  console.log(this.conversation);
+ console.log(this.conversation[0].text)
+ this.dfs.connectToApi(this.conversation[0].text);
       });
-      this.dfs.connectToApi();
+     
+      
   }
 
   resetSubscription = () => {        

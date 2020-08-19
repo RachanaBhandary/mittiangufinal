@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   dialogflow:{
     FTBal:'4d85890b402e4388a1b4d7eafbe533c8',
+    projectId:"ft-bal-jdnxov"
   
   },
   firebase:{

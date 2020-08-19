@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
-
+import { DialogflowService } from 'src/app/services/dialogflow.service';
 @Component({
   selector: 'app-mitti-logo',
   templateUrl: './mitti-logo.component.html',
@@ -8,10 +8,12 @@ import {Router} from '@angular/router'
 })
 export class MittiLogoComponent implements OnInit {
 
-  constructor(private _router:Router) { }
+  constructor(private _router:Router,private dfs:DialogflowService) {
+    
+   }
 
   handleClick(event: Event) {
-   
+    
     debugger;
     const test=document.getElementById('MittiLogoDesign');
    

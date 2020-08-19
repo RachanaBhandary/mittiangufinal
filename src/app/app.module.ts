@@ -23,6 +23,7 @@ import { StarRatingComponent } from './components/star-component/star-rating/sta
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
 
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -53,13 +54,13 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTooltipModule,
     BrowserAnimationsModule,
     CdkTableModule,
-    ChartsModule
+    ChartsModule,
   
-
+    HttpClientModule,
     
   ],
   
-    providers: [DialogflowService,  MatSnackBar],
+    providers: [DialogflowService, MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
