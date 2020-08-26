@@ -22,6 +22,7 @@ export class MessageComponent implements OnInit {
 
 constructor(private dfs: DialogflowService) { }
 
+
   ngOnInit() {}
  
   lineChartData: ChartDataSets[] = [
@@ -59,8 +60,10 @@ work(){
   console.log("inside work")
   var test=document.getElementById('suggestion');
   test.style.display="none";
+  
    }
    work1(){
+    console.log("inside work1")
     var test=document.getElementById('suggestion');
     test.style.display="block";
      }

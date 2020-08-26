@@ -1,23 +1,38 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
-<div [ngClass]="{'me' : message.sentBy === 'user'}" class="message-bubble ">
+
 
 
    
 
-      
+<div [ngClass]="{'me' : message.sentBy === 'user'}" class="message-bubble ">
           <div class="image">
             <img [src]="message.sentBy === 'user' ? message.userImg : message.botImg" class="rounded-circle user_img" >
         </div>  
-            <div class="message-text">
-                <div *ngIf="message.text=='bye'">{{work()}}</div>
+       
+            <div class="message-text" *ngIf="message.sentBy=='user'">
+               <!-- <div *ngIf="message.text=='bye'">{{work()}}</div>-->
                 
+               {{message.text}}
                
-                {{message.text}}
             </div>
+        </div>
+            
+                <!-- <div *ngIf="message.text=='bye'">{{work()}}</div>-->
+                 <div *ngFor="let item of message.text; let i = index;">
+               
+                     <div  [ngClass]="{'bot' : message.sentBy === 'bot'}" class="message-bubble ">
+                        
+                    <div class="message-text" *ngIf="message.sentBy=='bot'">
+                           {{message.text[i]}}
+                           </div>
+                </div>
+               
+               
+             </div>
 
   
 
-
+<!--
 
 <div *ngIf="message.chips && message.chips.length">
 
@@ -72,10 +87,9 @@
 <p *ngIf="message.webUrl" ><small><a target="_blank" [href]="message.webUrl">{{message.webUrl}}
     </a></small></p>
    
+-->
 
 
-
-</div>
 
 
 

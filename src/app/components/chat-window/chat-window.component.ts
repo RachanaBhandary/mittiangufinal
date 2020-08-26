@@ -5,6 +5,8 @@ import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask 
 import { combineLatest, from, Observable, of } from 'rxjs';
 import {Router} from '@angular/router'
 import { StarRatingColor } from 'src/app/components/star-component/star-rating/star-rating.component';
+import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 declare var $: any;
 
 @Component({
@@ -73,6 +75,7 @@ reader.readAsDataURL(this.fileToUpload);
   }
 sendMessage(){
   console.log(this.textMessage)
+  this.dfs.connectToApi(this.textMessage);
 this.dfs.sendToBot({
   text:this.textMessage,
   
@@ -84,6 +87,7 @@ this.textMessage='';
 
 }
 sendMessageFeedback(){
+
   this.dfs.sendToBot({
     text:'Like',
     
@@ -148,19 +152,25 @@ sendMessage1(){
 
   ngOnInit(): void {
 
-   
+
       this.subscription=this.dfs.chatSubject.subscribe((conversation:RichMessage[])=>{
         console.log('msg sent');
+        console.log(conversation)
         this.conversation=conversation;
 
     debugger;
         $(".msg_card_body").stop().animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
       
- console.log(this.conversation[0].text)
- this.dfs.connectToApi(this.conversation[0].text);
+ console.log("*****************************")
+      // this.abcsas(this.conversation[0].text)
+       
       });
-     
       
+      
+      
+  }
+  abcsas(aa){
+  
   }
 
   resetSubscription = () => {        

@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   dialogflow:{
     FTBal:'4d85890b402e4388a1b4d7eafbe533c8',
     projectId:"ft-bal-jdnxov"

@@ -12,7 +12,7 @@ import { RichMessage } from '../model/rich-messages.model';
 })
 
 export class DialogflowService {
-
+  
 accessyokrn:any;
   //readonly token=environment.dialogflow.FTBal;
   token:any;
@@ -20,7 +20,7 @@ accessyokrn:any;
   sessionId:12452125;
 res:any;
   constructor(private http:HttpClient) {
-   
+    
   
     
    }
@@ -71,6 +71,7 @@ res:any;
       config
     )*/
     console.log(request)
+    console.log("----------------------------")
     const params = new URLSearchParams();
     params.append('data',request);
     var url = 'http://localhost:5000/send-msg';
@@ -79,23 +80,77 @@ res:any;
     body:params
   }).then(res => res.json())
    .then(response => {
-    console.log(response);
-    this.res=response;
+    console.log(response.Reply);
+    
+    this.res=response.Reply;
+    let msg11=this.res;
+
+    
+   try{
+    if(msg11!==""){
+    console.log('sumana');
+  //msg11=JSON.parse(`${msg11}`)
+  msg11=new RichMessage({
+    text:msg11,
+    
+    sentBy:'bot'
+   
+    
+  });
+  console.log("sumannanaaaaaa");
+  console.log(msg11);
  
+  }
+  else{
+console.log("inside else block");
+ msg11=this.res["null"];
+
+ 
+
+ console.log(msg11);
+ 
+ msg11 = JSON.stringify(msg11);
+ console.log(msg11);
+ console.log("Unnatiiii");
+ 
+
+ msg11=JSON.parse(`${msg11}`)
+ msg11=new RichMessage(msg11);
+console.log("sumana inside else block");
+console.log(msg11);
+  }
+}
+  
+  catch(error){
+    console.log(error);
+    msg11=new RichMessage({
+      
+      text:this.res,
+      sentBy:'bot'
+    })
+    
+  
+  }
+  this.publishMessages(msg11);
+})
+  
+}
+  
+    //this.sendToBot(this.request);
    // speechSynthesis.speak( new SpeechSynthesisUtterance(response.Reply))
   
     
-   })
-    .catch(error => console.error('Error h:', error));
-  }
+  
+  
   
   
    sendToBot(messageObject){
+     
      console.log(messageObject)
       this.publishMessages(new RichMessage(messageObject));
       console.log("sumana check");
       console.log(messageObject.text);
-      this.postToDialogFlow(messageObject.text )
+      //this.postToDialogFlow(messageObject.text )
   
     }
 
@@ -104,7 +159,7 @@ res:any;
       this.publishMessages(new RichMessage(messageObject));
       console.log("sumana check");
       console.log(messageObject.text);
-      this.postToDialogFlow(messageObject.text );
+      //this.postToDialogFlow(messageObject.text );
   
     }
   
@@ -115,7 +170,7 @@ res:any;
   
   
   //sends and recievs msg via dialogflow
-  postToDialogFlow(messageToSend){
+  /*postToDialogFlow(messageToSend){
     console.log("unnati check");
     console.log(messageToSend);
     
@@ -158,7 +213,7 @@ console.log(msg11);
   catch(error){
     console.log(error);
     msg11=new RichMessage({
-      text:msg11,
+      text:this.res,
       sentBy:'bot'
     })
     
@@ -167,10 +222,11 @@ console.log(msg11);
   this.publishMessages(msg11);
   })
   
-  }
+  }*/
   
   publishMessages(rm:RichMessage){
     debugger;
+    console.log(rm)
     this.conversation.push(rm);
     console.log("checking logsss")
     console.log(this.conversation);
@@ -178,4 +234,3 @@ console.log(msg11);
   }
     
   }
-  

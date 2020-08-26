@@ -90,7 +90,7 @@
 
 
 
-.message-bubble{
+.message-bubble.bot{
     width: 100%;
     border: 2px solid #dedede;
     background-color: #26b8a2;
