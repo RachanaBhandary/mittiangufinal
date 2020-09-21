@@ -90,13 +90,17 @@
                 </span></div>
                 <textarea id="chatTextarea" placeholder="Type here and press enter.."[(ngModel)]="textMessage"
                 (keyup.enter)="sendMessage()"></textarea></div>
+                
                 <div id="actionButtonsContainer">
+                    
                     <div id="hidableActionsWrapper" style="display: block;">
+                       
                         <div id="rateMainWrapper" style="display: block;">
                            
-                                <div id="rateContainer"><a id="rateNegative" href="javascript:void(0);" title="Rate this conversation with +1" (click)="sendMessageFeedback()"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+                              <!--  <div id="rateContainer"><a id="rateNegative" href="javascript:void(0);" title="Rate this conversation with +1" (click)="sendMessageFeedback()"><span class="glyphicon glyphicon-thumbs-up"></span></a>
                                     <a id="ratePositive" href="javascript:void(0);" title="Rate this conversation with -1" (click)="sendMessageFeedbackNegative()"><span class="glyphicon glyphicon-thumbs-down"></span></a>
-                                </div>
+                                </div>-->
+                               <a href="javascript:void(0);" (click)="aa()"><i class='fas fa-microphone' style='font-size:20px;color:red'></i></a> 
                             </div>
                             
                             </div>

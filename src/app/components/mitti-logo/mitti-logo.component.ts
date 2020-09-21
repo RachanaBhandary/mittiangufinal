@@ -18,7 +18,7 @@ export class MittiLogoComponent implements OnInit {
     const test=document.getElementById('MittiLogoDesign');
    
 this._router.navigate(['/homePage']);
-console.log("hi");
+
   }
 
   

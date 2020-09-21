@@ -15,6 +15,7 @@ declare var $: any;
   styleUrls: ['./chat-window.component.css']
 })
 export class ChatWindowComponent implements OnInit {
+  dfs1:DialogflowService
 conversation:RichMessage[]=[];
 askInfo=false;
 textMessage:string='';
@@ -109,7 +110,35 @@ test(){
 
 }
 
+aa()
+{
+   
+  try {
+    var SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
+    var recognition: any = new SpeechRecognition();
+  }
+  catch(e) {
+    console.error(e);
+    $('.no-browser-support').show();
+  }
+  recognition.start();
+  console.log("starts")
+  recognition.onresult = function(event) {
+    var last = event.results.length - 1;
+    var bb=event.results[last][0].transcript;
+    speechSynthesis.speak( new SpeechSynthesisUtterance("Rachana"))
+    this.dfs.connectToApi(bb);
+this.dfs.sendToBot({
+  text:bb,
+  
+  sentBy:'user'
+ 
+  
+})
+  }
+  
+}
 sendMessage1(){
  
 

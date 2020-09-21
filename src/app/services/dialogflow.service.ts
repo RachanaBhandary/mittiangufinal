@@ -44,7 +44,17 @@ res:any;
   }*/
 
   public connectToApi(request) {
-   
+    const params1 = new URLSearchParams();
+    params1.append('data',request);
+    var url = 'http://localhost:9999/sss';
+  fetch(url, {
+    method: 'POST',
+    body:request
+  }).then(res => res.json())
+  .then(response => {
+   console.log("Python"+response.Reply);
+  });
+  
     /*debugger;
     console.log("sumana checking");
     console.log(request);
