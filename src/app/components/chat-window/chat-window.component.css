@@ -48,13 +48,44 @@ overflow: hidden;
 a{
     color: white;
 }
-
+.fa {
+    color: white;
+    background: #1e2440;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 1rem;
+    float: right;
+    width: 2rem;
+    height: 2rem;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .mCSB_scrollTools {
+    margin: 1px -3px 1px 0;
+    opacity: 0;
+  }
+  
+  .mCSB_inside > .mCSB_container {
+    margin-right: 0px;
+    padding: 0 10px;
+  }
+  
+  .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    background-color: rgba(0, 0, 0, 0.5)!important;
+  }
+  
 .chat-window{
     position: absolute;
     width: 80%;
     height: 80%;
     margin-left: 2rem;;
     overflow-y: auto;
+}
+.icon-user {
+    position:relative;
+    top: -10px;
+    left: -100px;
 }
 .message-input{
     position: fixed;

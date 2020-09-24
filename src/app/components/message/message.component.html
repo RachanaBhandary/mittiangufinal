@@ -1,9 +1,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
 
 
-
-   
-
 <div [ngClass]="{'me' : message.sentBy === 'user'}" class="message-bubble ">
           <div class="image">
             <img [src]="message.sentBy === 'user' ? message.userImg : message.botImg" class="rounded-circle user_img" >

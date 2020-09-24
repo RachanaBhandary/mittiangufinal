@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { DialogflowService } from 'src/app/services/dialogflow.service';
 import { RichMessage } from '../../model/rich-messages.model';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
@@ -7,6 +7,12 @@ import {Router} from '@angular/router'
 import { StarRatingColor } from 'src/app/components/star-component/star-rating/star-rating.component';
 import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { coerceCssPixelValue } from '@angular/cdk/coercion';
+import { MessageComponent } from 'src/app/components/message/message.component';
+import { ThemeService } from 'ng2-charts';
+import { ChatWindowService } from 'src/app/services/chat-window.service';
+
+
 declare var $: any;
 
 @Component({
@@ -15,7 +21,7 @@ declare var $: any;
   styleUrls: ['./chat-window.component.css']
 })
 export class ChatWindowComponent implements OnInit {
-  dfs1:DialogflowService
+
 conversation:RichMessage[]=[];
 askInfo=false;
 textMessage:string='';
@@ -32,7 +38,7 @@ starColorP:StarRatingColor = StarRatingColor.primary;
 starColorW:StarRatingColor = StarRatingColor.warn;
 
 imageUrl:string="assets/img/default-image.jpg";
-  constructor(private dfs:DialogflowService, private storage: AngularFireStorage,private _router:Router) { 
+  constructor(private service:ChatWindowService, private dfs:DialogflowService, private storage: AngularFireStorage,private _router:Router) { 
   
 
   }
@@ -74,9 +80,9 @@ reader.readAsDataURL(this.fileToUpload);
 
 
   }
-sendMessage(){
-  console.log(this.textMessage)
-  this.dfs.connectToApi(this.textMessage);
+public sendMessage(){
+  debugger;
+  
 this.dfs.sendToBot({
   text:this.textMessage,
   
@@ -84,7 +90,7 @@ this.dfs.sendToBot({
  
   
 })
-this.textMessage='';
+this.textMessage=""
 
 }
 sendMessageFeedback(){
@@ -110,35 +116,53 @@ test(){
 
 }
 
-aa()
-{
-   
-  try {
-    var SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
-    var recognition: any = new SpeechRecognition();
-  }
-  catch(e) {
-    console.error(e);
-    $('.no-browser-support').show();
-  }
-  recognition.start();
-  console.log("starts")
-  recognition.onresult = function(event) {
-    var last = event.results.length - 1;
-    var bb=event.results[last][0].transcript;
-    speechSynthesis.speak( new SpeechSynthesisUtterance("Rachana"))
-    this.dfs.connectToApi(bb);
-this.dfs.sendToBot({
-  text:bb,
-  
-  sentBy:'user'
+public aa()
+{
  
+ debugger;
+   var SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+   var recognition: any = new SpeechRecognition();
   
-})
-  }
+   
+  recognition.start();
+ 
+
+  console.log("starts")
   
+  setTimeout(function() { 
+    recognition.onresult = (event)=> {
+      debugger;
+         var last = event.results.length - 1;
+     
+        //document.getElementById("chatTextarea").innerHTML=this.textMessage;
+        this.sendMessage();
+        this.ngOnInit()
+        this.insertMessage();
+        this.textMessage =event.results[last][0].transcript;
+        console.log("asf"+this.textMessage)
+     
+       }
+    console.log("Returned second promise"); 
+    }, 4000);
+ 
+
+
 }
+
+insertMessage()
+{
+  debugger;
+  var msg = document.getElementById("chatTextarea").innerHTML
+  console.log(msg)
+  if ($.trim(msg) == '') {
+    return false;
+  }
+  $('<div class="message message-personal">' + msg + '</div>').appendTo($('.message-content-inner'));
+
+}
+
 sendMessage1(){
  
 
@@ -180,27 +204,39 @@ sendMessage1(){
   }
 
   ngOnInit(): void {
-
-
-      this.subscription=this.dfs.chatSubject.subscribe((conversation:RichMessage[])=>{
-        console.log('msg sent');
-        console.log(conversation)
-        this.conversation=conversation;
-
-    debugger;
-        $(".msg_card_body").stop().animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
-      
- console.log("*****************************")
-      // this.abcsas(this.conversation[0].text)
-       
-      });
-      
-      
-      
-  }
-  abcsas(aa){
+ /*   
+debugger;
+var SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+const icon = document.querySelector('i.fa.fa-microphone')
+icon.addEventListener('click', () => {
+  
+  dictate();
+});
+const dictate = () => {
+  recognition.start();
+  recognition.onresult = (event) => {
+    this.textMessage = event.results[0][0].transcript;
+    this.sendMessage()
   
   }
+}*/
+
+    this.subscription=this.dfs.chatSubject.subscribe((conversation:RichMessage[])=>{
+      console.log('msg sent');
+      
+    
+      this.conversation=conversation;
+
+  debugger;
+      $(".msg_card_body").stop().animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
+    
+console.log(this.conversation);
+    });
+ 
+}
+
+r
 
   resetSubscription = () => {        
     this.dfs.chatSubject.next();

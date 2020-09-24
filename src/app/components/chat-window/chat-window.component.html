@@ -7,11 +7,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-
-
-
-
-
 <div class="fixed-top">
     
     <div class="col-md-8 col-xl-6 chat">
@@ -41,31 +36,23 @@
     </div>
     </div>
     
-        
-        
-    
-       
 
-    
-    
-    
-    
+        
     	<div class="card-body msg_card_body" >
+           
 
-
-
-
-
+            
 
             <div class="d-flex justify-content-start mb-4">
-    <div  class="message-content-inner">
-    <app-message *ngFor="let m of conversation" [message]="m" class="test">
-    
-    </app-message>
-    
-    </div>
-    
-    
+   
+                <div  class="message-content-inner">
+
+                    <app-message *ngFor="let m of conversation" [message]="m" class="test">
+                
+                </app-message>
+                
+                </div>
+   
    <!-- <div class="card-footer">
        
         <div class="input-group">
@@ -88,9 +75,14 @@
                 <div id="tooLongMsgNotification"><span class="icon-alert">
 
                 </span></div>
-                <textarea id="chatTextarea" placeholder="Type here and press enter.."[(ngModel)]="textMessage"
-                (keyup.enter)="sendMessage()"></textarea></div>
                 
+    
+               
+                <textarea id="chatTextarea" class="chatclass" placeholder="Type here and press enter.."  [(ngModel)]="textMessage"
+                (keyup.enter)="sendMessage()">
+                
+            </textarea>
+           
                 <div id="actionButtonsContainer">
                     
                     <div id="hidableActionsWrapper" style="display: block;">
@@ -100,18 +92,29 @@
                               <!--  <div id="rateContainer"><a id="rateNegative" href="javascript:void(0);" title="Rate this conversation with +1" (click)="sendMessageFeedback()"><span class="glyphicon glyphicon-thumbs-up"></span></a>
                                     <a id="ratePositive" href="javascript:void(0);" title="Rate this conversation with -1" (click)="sendMessageFeedbackNegative()"><span class="glyphicon glyphicon-thumbs-down"></span></a>
                                 </div>-->
-                               <a href="javascript:void(0);" (click)="aa()"><i class='fas fa-microphone' style='font-size:20px;color:red'></i></a> 
-                            </div>
+                         <button  (mouseup)="aa()"><i class='fas fa-microphone' style='font-size:20px;color:red'></i></button>
+
+
+
+                          
+                            
+                                </div>
                             
                             </div>
                                
                               
                              
-                               </div></fieldset></div>
+                               </div>
+            </div>
+                
+               </fieldset></div>
    
             
            
            
+        </div>
+        </div>
+        </div>
         </div>
         </div>
         

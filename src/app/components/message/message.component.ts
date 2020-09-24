@@ -17,15 +17,28 @@ import {Chip} from 'src/app/model/rich-messages.model';
 export class MessageComponent implements OnInit {
  
 @Input() message;
-@Input('test') test:[];
 
 
-constructor(private dfs: DialogflowService) { }
+
+constructor(private dfs: DialogflowService) { 
+  
+}
 
 
-  ngOnInit() {}
+  ngOnInit() {
+    debugger;
+    console.log(this.message);
+  
+  }
  
-  lineChartData: ChartDataSets[] = [
+ ccc(conversation:RichMessage[]=[])
+ {
+console.log(conversation)
+this.message=conversation;
+this.ngOnInit()
+
+ }
+  /*lineChartData: ChartDataSets[] = [
    
     { data: [this.test], label: 'Balance' },
     
@@ -77,7 +90,7 @@ ReplayOperation(replay:Replay){
     sentBy: 'user'
   })
 }
-   
+  */ 
 
  
   

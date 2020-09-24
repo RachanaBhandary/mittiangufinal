@@ -19,6 +19,7 @@ import {MatTooltipModule } from '@angular/material/tooltip';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ChartsModule } from 'ng2-charts';
 import { StarRatingComponent } from './components/star-component/star-rating/star-rating.component';
+import { ChatWindowService } from 'src/app/services/chat-window.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -60,7 +61,7 @@ import {HttpClientModule} from '@angular/common/http';
     
   ],
   
-    providers: [DialogflowService, MatSnackBar],
+    providers: [DialogflowService, MatSnackBar,ChatWindowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
