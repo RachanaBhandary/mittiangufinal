@@ -17,7 +17,7 @@ import {Chip} from 'src/app/model/rich-messages.model';
 export class MessageComponent implements OnInit {
  
 @Input() message;
-
+aa=false;
 
 
 constructor(private dfs: DialogflowService) { 
@@ -27,16 +27,17 @@ constructor(private dfs: DialogflowService) {
 
   ngOnInit() {
     debugger;
+    
     console.log(this.message);
-  
+    console.log(this.aa)
+   
+ 
   }
  
- ccc(conversation:RichMessage[]=[])
+ ccc()
  {
-console.log(conversation)
-this.message=conversation;
-this.ngOnInit()
-
+  this.aa=true
+console.log(this.aa)
  }
   /*lineChartData: ChartDataSets[] = [
    

@@ -30,6 +30,7 @@ private _router:Router;
  
   
    sendToBot(messageObject){
+     debugger
       this.publishMessages(new RichMessage(messageObject));
       console.log("sumana check");
       console.log(messageObject.text);
@@ -74,7 +75,7 @@ private _router:Router;
 
     
    // speechSynthesis.speak( new SpeechSynthesisUtterance(response.Reply))
-  
+  // speechSynthesis.speak( new SpeechSynthesisUtterance(response.Reply))
     
   // })
    // .catch(error => console.error('Error h:', error));
@@ -118,13 +119,15 @@ console.log(response.Reply);
   
   catch(error){
     console.log(error);
+    
     response.Reply=new RichMessage({
       text:response.Reply,
       sentBy:'bot'
     })
     
-  
+    
   }
+  
   this.publishMessages(response.Reply);
   })
   
@@ -136,7 +139,9 @@ console.log(response.Reply);
     console.log("checking logsss")
     console.log(this.conversation);
   this.chatSubject.next(this.conversation);
- 
+
+   
+  
   }
     
   }

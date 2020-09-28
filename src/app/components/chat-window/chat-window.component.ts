@@ -11,9 +11,10 @@ import { coerceCssPixelValue } from '@angular/cdk/coercion';
 import { MessageComponent } from 'src/app/components/message/message.component';
 import { ThemeService } from 'ng2-charts';
 import { ChatWindowService } from 'src/app/services/chat-window.service';
+import * as $ from 'jquery';
+import { exit } from 'process';
 
-
-declare var $: any;
+//declare var $: any;
 
 @Component({
   selector: 'app-chat-window',
@@ -21,7 +22,7 @@ declare var $: any;
   styleUrls: ['./chat-window.component.css']
 })
 export class ChatWindowComponent implements OnInit {
-
+flag=false;
 conversation:RichMessage[]=[];
 askInfo=false;
 textMessage:string='';
@@ -115,10 +116,35 @@ test(){
  this._router.navigate(['']);
 
 }
+cc()
+{
+  if(this.flag==true)
+  {
+    console.log(this.conversation[1])
+    var text=this.conversation[(this.conversation.length)-1].text.toString()
+    speechSynthesis.speak( new SpeechSynthesisUtterance(text))
+    
+    this.flag=false;
+  }
+  
+}
+micchange()
+{
+  //blink();
+  document.getElementById("mic").style.color="red"
+  document.getElementById("mic").style.animation="blink 1s ease-in infinite";
+  console.log("aaa")
+  /*function blink(){
+    $('#mic').delay(100).fadeTo(100,0.5).delay(100).fadeTo(100,1, blink);
+}*/
 
-
+}
 public aa()
 {
+ 
+  debugger;
+  
+  
  
  debugger;
    var SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -128,40 +154,42 @@ public aa()
    
   recognition.start();
  
-
-  console.log("starts")
   
-  setTimeout(function() { 
-    recognition.onresult = (event)=> {
-      debugger;
-         var last = event.results.length - 1;
+  recognition.onresult = (event)=> {
+    document.getElementById("mic").style.color="#57b3dd"
+    document.getElementById("mic").style.animation="voi";
+    debugger;
+   console.log("imsode")
+       var last = event.results.length - 1;
+       this.textMessage =event.results[last][0].transcript;
+      //document.getElementById("chatTextarea").innerHTML=this.textMessage;
      
-        //document.getElementById("chatTextarea").innerHTML=this.textMessage;
-        this.sendMessage();
-        this.ngOnInit()
-        this.insertMessage();
-        this.textMessage =event.results[last][0].transcript;
-        console.log("asf"+this.textMessage)
-     
-       }
-    console.log("Returned second promise"); 
-    }, 4000);
- 
-
-
-}
-
-insertMessage()
-{
-  debugger;
-  var msg = document.getElementById("chatTextarea").innerHTML
-  console.log(msg)
-  if ($.trim(msg) == '') {
-    return false;
+      this.sendMessage();
+      
+      
+      console.log("asf"+this.textMessage)
+      this.flag=true;
+       
+      
+     }
+  console.log("starts")
+  for (var i = 1; i <= 15; ++i) {
+    setDelay(i);
   }
-  $('<div class="message message-personal">' + msg + '</div>').appendTo($('.message-content-inner'));
-
+  function setDelay(i) {
+    
+    setTimeout(function(){
+     console.log("aa")
+     $(".msg_card_body").animate({ scrollTop: $(".msg_card_body")[0].scrollHeight+1000}, 1000);
+    }, 7500);
+  }
+ 
+ 
+console.log("sf")
+  
 }
+
+
 
 sendMessage1(){
  
@@ -203,7 +231,7 @@ sendMessage1(){
     this.rating = rating;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
  /*   
 debugger;
 var SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -220,7 +248,7 @@ const dictate = () => {
     this.sendMessage()
   
   }
-}*/
+}*/debugger
 
     this.subscription=this.dfs.chatSubject.subscribe((conversation:RichMessage[])=>{
       console.log('msg sent');
@@ -229,14 +257,15 @@ const dictate = () => {
       this.conversation=conversation;
 
   debugger;
-      $(".msg_card_body").stop().animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
+      $(".msg_card_body").stop().animate({ scrollTop: $(".msg_card_body")[0].scrollHeight+1000}, 1000);
     
 console.log(this.conversation);
+this.cc()
     });
  
 }
 
-r
+
 
   resetSubscription = () => {        
     this.dfs.chatSubject.next();
