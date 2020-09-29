@@ -139,10 +139,28 @@ micchange()
 }*/
 
 }
+playAudio()
+{
+  debugger;
+  let audio = new Audio();
+  audio.src = "assets/audio/start_rec.mp3";
+  audio.load();
+  audio.play();
+}
+stopAudio()
+{
+
+  let audio = new Audio();
+  audio.src = "assets/audio/start_rec.mp3";
+  audio.load();
+  audio.play();
+}
 public aa()
 {
  
-  debugger;
+  this.playAudio();
+    
+    
   
   
  
@@ -156,8 +174,9 @@ public aa()
  
   
   recognition.onresult = (event)=> {
+    this.stopAudio();
     document.getElementById("mic").style.color="#57b3dd"
-    document.getElementById("mic").style.animation="voi";
+    document.getElementById("mic").style.animation="";
     debugger;
    console.log("imsode")
        var last = event.results.length - 1;
