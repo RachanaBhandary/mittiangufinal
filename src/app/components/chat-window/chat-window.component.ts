@@ -32,6 +32,7 @@ onChipSelected:any;
 url_test:string;
 subscription:any;
 fileToUpload:File=null;
+fileToUpload1:File;
 rating:number ;
 starCount:number = 5;
 starColor:StarRatingColor = StarRatingColor.accent;
@@ -56,13 +57,20 @@ this.imageText=imageText1;
 
 console.log(imageText1);
 console.log(this.imageText);
+this.dfs.sendToBot({
+  text:this.imageText,
+  
+  sentBy:'user'
+ 
+  
+})
 var reader=new FileReader();
 reader.onload=(event:any)=>{
   console.log(event);
 this.imageUrl=event.target.result;
 var test=this.imageUrl;
 const preview=document.getElementById("test");
-preview.style.display="block";
+//preview.style.display="block";
 var list = '<li class="list-group-item">'
 this.imageUrl1="https://storage.cloud.google.com/test-va/"+imageText1
  this.url_test = "https://storage.googleapis.com/as-testing-bucket/" + imageText1;
@@ -71,6 +79,7 @@ this.imageUrl1="https://storage.cloud.google.com/test-va/"+imageText1
  const ref: AngularFireStorageReference = this.storage.ref(filePath);
  const task: AngularFireUploadTask = ref.put(this.fileToUpload);
  return from(task);
+
 
 }
 
@@ -81,6 +90,7 @@ reader.readAsDataURL(this.fileToUpload);
 
 
   }
+
 public sendMessage(){
   debugger;
   
@@ -283,7 +293,6 @@ this.cc()
     });
  
 }
-
 
 
   resetSubscription = () => {        
