@@ -169,6 +169,11 @@ input:focus, textarea:focus, select:focus{
     right: 14px;
     top: 11px;
 }
+#upload
+{
+    right: -28px;
+    top: -33px;
+}
 #hidableActionsWrapper {
     float: left;
 }
