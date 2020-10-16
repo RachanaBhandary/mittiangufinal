@@ -84,13 +84,11 @@ this.imageUrl1="https://storage.cloud.google.com/test-va/"+imageText1
 }
 
 
-
-
 reader.readAsDataURL(this.fileToUpload);
 
 
   }
-
+  
 public sendMessage(){
   debugger;
   
@@ -130,8 +128,8 @@ cc()
 {
   if(this.flag==true)
   {
-    console.log(this.conversation[1])
-    var text=this.conversation[(this.conversation.length)-1].text.toString()
+    console.log(this.conversation[(this.conversation.length)-1])
+    var text=this.conversation[(this.conversation.length)-1].text[0]['text'].toString()
     speechSynthesis.speak( new SpeechSynthesisUtterance(text))
     
     this.flag=false;
@@ -259,9 +257,16 @@ sendMessage1(){
     console.log(rating);
     this.rating = rating;
   }
-
+ 
   ngOnInit() {
- /*   
+   
+    this.dfs.sendToBot({
+      text:"hi",
+      
+      sentBy:'user'
+     
+      
+    }) /*   
 debugger;
 var SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 const recognition = new SpeechRecognition();

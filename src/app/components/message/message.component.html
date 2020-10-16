@@ -3,6 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
 
 
+
 <div [ngClass]="{'me' : message.sentBy === 'user'}" class="message-bubble ">
           <div class="image">
             <img [src]="message.sentBy === 'user' ? message.userImg : message.botImg" class="rounded-circle user_img" >
@@ -15,18 +16,87 @@
                
             </div>
         </div>
-            
+        <div *ngFor="let item of message.text; let i = index;">
+            <div *ngIf="message.text[i].text=='Were you looking for any one of the following?'">
+                
+            <div  [ngClass]="{'bot' : message.sentBy === 'bot'}" class="message-bubble ">
+                <div class="message-text" *ngIf="message.sentBy=='bot'">
+                    <div *ngIf="message.text[i]['message']=='text'">
+                        {{message.text[i].text}}
+                        <div *ngIf="message.text[i].text=='Were you looking for any one of the following?'">
+                            
+                            <div *ngFor="let item1 of links; let j = index;">
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{url_for_link}}">{{links[j]}}</a> 
+                               <br>
+                               
+                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FAQ:{{links[j]}}
+                               <br>
+                               --------------------------------------------------------------------------------------------
+                            </div>
+                        </div>
+                    </div>
+</div>
+       </div>             
+           </div>
+        </div>
+        
                 <!-- <div *ngIf="message.text=='bye'">{{work()}}</div>-->
                  <div *ngFor="let item of message.text; let i = index;">
-               
+                    <div *ngIf="message.text[0].text!='Were you looking for any one of the following?'">
+
                      <div  [ngClass]="{'bot' : message.sentBy === 'bot'}" class="message-bubble ">
                         
                     <div class="message-text" *ngIf="message.sentBy=='bot'">
-                           {{message.text[i]}}
+                        <div *ngIf="message.text[i]['message']=='text'">
+                            {{message.text[i].text}}
+                            <div *ngIf="message.text[i].text=='Were you looking for any one of the following?'">
+                                
+                                <div *ngFor="let item1 of links; let j = index;">
+                                    <br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{url_for_link}}">{{links[j]}}</a> 
+                                   <br>
+                                   
+                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FAQ:{{links[j]}}
+                                   <br>
+                                   --------------------------------------------------------------------------------------------
+                                </div>
+                            </div>
+                        </div>
+                      <!--  <div *ngIf="message.text[i].message=='payload'">
+                            <div *ngFor="let item of message.text[i]; let j= index;">  
+                            {{message.text[i][j]}}
+                            </div>
+                        </div>-->
+                          <!-- {{message.text[i].text}}-->
+                           <div *ngIf="message.text[i].text=='Welcome John , How may I help you? You can type your question in space provided from the option given below'">
+                               <p id="aa">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Fund Transfer</p>
+                               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Transaction History</p>
+                               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Balance</p>
+                               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Raise Dispute</p>
+                               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Address Update </p>
+                               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Close Ticket </p>
+                              <!-- <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. Reset Password </p>-->
+</div>
+                        <div *ngIf="message.text[i].text=='Sure!! I can help you. We see that you have 2 relationships with our bank. Please type the option in query box'">
+                           
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;Credit&nbsp;&nbsp;&nbsp;2.&nbsp;Debit</p>
+                        </div>
+                        
+                        <div *ngIf="message.text[i].text=='Sure John, We will help you with that.Please type any below option'">
+                           
+                            <p>1.&nbsp;Internal Fund Transfer&nbsp;&nbsp;&nbsp;2.&nbsp;External Fund Transfer</p>
+                        </div>
+                        
+                        <div *ngIf="message.text[i].text=='Please upload one of the below documents for the address verification'">
+                           
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;Driving License&nbsp;&nbsp;&nbsp;2.&nbsp;Passport</p>
+                        </div>
+
                            </div>
                 </div>
-               
-               
+               </div>
+              
              </div>
 
   

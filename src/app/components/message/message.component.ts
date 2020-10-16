@@ -18,7 +18,8 @@ export class MessageComponent implements OnInit {
  
 @Input() message;
 aa=false;
-
+ links=[]
+ url_for_link;
 
 constructor(private dfs: DialogflowService) { 
   
@@ -30,8 +31,26 @@ constructor(private dfs: DialogflowService) {
     
     console.log(this.message);
     console.log(this.aa)
-   
- 
+    var objectLength = Object.keys(this.message.text[1]).length
+    console.log(objectLength)
+    
+    for(var i=0;i<this.message.text.length;i++)
+    {
+      if(this.message.text[i]['message']=="payload")
+      {
+        for(var j=0;j< Object.keys(this.message.text[i]).length;j++)
+        {
+          var k=j+1
+            this.links.push(this.message.text[i]['url'+k+''])
+        }
+      }
+
+    }
+    console.log(this.links)
+   this.links.pop()
+ this.url_for_link=this.links[this.links.length-1]
+ console.log(this.url_for_link)
+ this.links.pop();
   }
  
  ccc()

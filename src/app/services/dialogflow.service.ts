@@ -7,6 +7,7 @@ import { ApiAiClient } from 'api-ai-javascript/es6/ApiAiClient';
 import {Observable} from 'rxjs';
 import {Subject} from 'rxjs';
 import { RichMessage } from '../model/rich-messages.model';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,8 +27,7 @@ private _router:Router;
   constructor() { }
   chatSubject=new Subject<RichMessage[]>();
   conversation:RichMessage[]=[];
-  
- 
+
   
    sendToBot(messageObject){
      debugger
@@ -62,12 +62,14 @@ private _router:Router;
     console.log(messageToSend)
     const params = new URLSearchParams();
     params.append('data',messageToSend);
+    console.log(params)
     var url = 'http://localhost:5000/send-msg';
   fetch(url, {
     method: 'POST',
     body:params
   }).then(res => res.json())
    .then(response => {debugger
+   
     console.log(response);
     
     this.res=response;
@@ -135,10 +137,19 @@ console.log(response.Reply);
   
   publishMessages(rm:RichMessage){
     debugger;
+    console.log(rm)
+    if(rm.text=="hi")
+    {
+
+    }
+    else{
     this.conversation.push(rm);
+    }
     console.log("checking logsss")
     console.log(this.conversation);
+    
   this.chatSubject.next(this.conversation);
+    
 
    
   
