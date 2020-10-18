@@ -27,7 +27,7 @@
                             
                             <div *ngFor="let item1 of links; let j = index;">
                                 <br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{url_for_link}}">{{links[j]}}</a> 
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a style="color:#b8263a;font-weight: bold;font-size:13px;" href="{{url_for_link}}">{{links[j]}}</a>
                                <br>
                                
                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FAQ:{{links[j]}}
@@ -54,10 +54,10 @@
                                 
                                 <div *ngFor="let item1 of links; let j = index;">
                                     <br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{{url_for_link}}">{{links[j]}}</a> 
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><a href="{{url_for_link}}">{{links[j]}}</a></b>  
                                    <br>
                                    
-                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FAQ:{{links[j]}}
+                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>FAQ:{{links[j]}}</b>
                                    <br>
                                    --------------------------------------------------------------------------------------------
                                 </div>

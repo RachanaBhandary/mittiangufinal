@@ -34,7 +34,7 @@ overflow: hidden;
 
 }
 .card-body{
-    background-color: white;
+    background-color:rgb(236, 236, 236);
 }
 
 .user_info{
@@ -210,7 +210,7 @@ input:focus, textarea:focus, select:focus{
 
 .msg-bubble-bot{
     border-radius: 10rem;
-    background-color: #78e08f;
+    background-color: #b8263a;
     color: #ffffff;
     padding:0.8rem; 
     margin-top: 0.3rem;
@@ -343,12 +343,13 @@ input:focus, textarea:focus, select:focus{
 }
 .fa.fa-paperclip.fa-lg{
     font-size: 20px;
+    color: #b8263a;
 }
 
 .card{
     height: 550px;
     border-radius: 15px !important;
-     background-color: #26b8a2;
+     background-color: #b8263a;
     width: 69%;
     
     top: 59px;

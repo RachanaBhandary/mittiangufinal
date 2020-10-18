@@ -183,7 +183,7 @@ public aa()
   
   recognition.onresult = (event)=> {
     this.stopAudio();
-    document.getElementById("mic").style.color="#57b3dd"
+    document.getElementById("mic").style.color="#b8263a"
     document.getElementById("mic").style.animation="";
     debugger;
    console.log("imsode")

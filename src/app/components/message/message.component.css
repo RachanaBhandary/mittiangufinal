@@ -43,13 +43,13 @@
 
 .message-bubble.me{
     border: 2px solid #dedede;
-    background-color: #e5e5e5;
+    background-color:  #b8263a;
     border-radius: 25px;
     padding-top: -4px;
     padding-bottom: -1px;
     float: right;
     width: 44%;
-    color:black;
+    color:white;
    
     
 }
@@ -93,8 +93,8 @@
 .message-bubble.bot{
     width: 100%;
     border: 2px solid #dedede;
-    background-color: #26b8a2;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     border-radius: 25px;
     padding: 10px;
     padding: 5px;
