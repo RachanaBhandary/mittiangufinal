@@ -25,6 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
 
 import {HttpClientModule} from '@angular/common/http';
+import { LoanComponent } from './loan/loan.component';
+import { AccountComponent } from './account/account.component';
+import { MailComponent } from './mail/mail.component';
 
 
 
@@ -34,7 +37,10 @@ import {HttpClientModule} from '@angular/common/http';
     MessageComponent,
     ChatWindowComponent,
     MittiLogoComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    LoanComponent,
+    AccountComponent,
+    MailComponent
 
   
     
