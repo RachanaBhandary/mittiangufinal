@@ -3,7 +3,7 @@
 
 
 export class BaseMessage{
-    botImg:string='assets/img/aa.png';
+    botImg:string='assets/img/MittiConv.jpg';
     userImg:string="assets/img/userImg.jpg";
     sentBy: string = '';
     sentOn=new Date();

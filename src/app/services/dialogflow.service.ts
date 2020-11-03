@@ -63,7 +63,8 @@ private _router:Router;
     const params = new URLSearchParams();
     params.append('data',messageToSend);
     console.log(params)
-    var url = 'https://mittiserver-dot-ft-bal-jdnxov.uc.r.appspot.com/send-msg';
+    //var url = 'https://mittiserver-dot-ft-bal-jdnxov.uc.r.appspot.com/send-msg';
+    var url = 'https://localhost:5000/send-msg';
   fetch(url, {
     method: 'POST',
     body:params
